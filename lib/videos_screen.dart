@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:task_roaa/app_video_player.dart';
 import 'package:task_roaa/constant.dart';
 import 'package:video_player/video_player.dart';
+
+import 'app_video_player.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -10,8 +11,11 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final _style = const TextStyle(fontWeight: FontWeight.bold, fontSize: 20);
+  VideoPlayerController? _ctrl;
 
-  late AppVideoPlayer appVideoPlayer = AppVideoPlayer();
+  initController(String url) {
+    _ctrl = VideoPlayerController.network(url);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +40,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     height: 20,
                   ),
                   userLayout(index),
+                  const SizedBox(
+                    height: 20,
+                  ),
                   buildVideo(index),
                   reactionLayout(context)
                 ],
@@ -48,7 +55,11 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   buildVideo(index) {
-    return appVideoPlayer.buildVidePlayer(listOfModel[index]["url"] as String, (){});
+    initController(listOfModel[index]["url"] as String);
+    return AppVideoPlayer(
+      url: listOfModel[index]["url"] as String,
+      videoPlayerController: _ctrl,
+    );
   }
 
   userLayout(index) {
@@ -130,6 +141,4 @@ class _HomeScreenState extends State<HomeScreen> {
       ],
     );
   }
-
-
 }

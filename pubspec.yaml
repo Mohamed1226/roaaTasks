@@ -36,7 +36,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   video_player: ^2.2.12
   chewie: ^1.2.2
-  better_player: ^0.0.44
+  visibility_detector: ^0.2.2
+  #better_player: ^0.0.44
+  #inview_notifier_list: ^3.0.0
 
 dev_dependencies:
   flutter_test:

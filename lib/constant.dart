@@ -1,4 +1,3 @@
-
 final listOfModel = [
   {
     "title": "Abdullah",
@@ -43,18 +42,6 @@ final listOfModel = [
     "isRunning": false
   },
 ];
-
-
-
-
-
-
-
-
-
-
-
-
 
 // List<String> listOfUrlVideos = [
 //   "https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4",
