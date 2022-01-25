@@ -16,8 +16,11 @@ const _DEFAULT_ASPECT_RATIO = (4 / 3);
 class AppVideoPlayer extends StatefulWidget {
   // final VideoItemData item;
   final url;
- final VideoPlayerController? videoPlayerController;
-  const AppVideoPlayer({Key? key, required this.url,required this.videoPlayerController}) : super(key: key);
+  final VideoPlayerController? videoPlayerController;
+
+  const AppVideoPlayer(
+      {Key? key, required this.url, required this.videoPlayerController})
+      : super(key: key);
 
   @override
   State<AppVideoPlayer> createState() => _AppVideoPlayerState();
@@ -30,11 +33,7 @@ class _AppVideoPlayerState extends State<AppVideoPlayer> {
 
   @override
   void initState() {
-    // final _ctrl = VideoPlayerController.network(
-    //   widget.url,
-    // );
-   final _ctrl =widget.videoPlayerController;
-    print("_ctrl");
+    final _ctrl = widget.videoPlayerController;
     _initPlayer(_ctrl!);
     super.initState();
   }
@@ -51,7 +50,6 @@ class _AppVideoPlayerState extends State<AppVideoPlayer> {
                   color: Colors.white,
                   child: Stack(
                     children: const [
-
                       Center(child: CircularProgressIndicator()),
                     ],
                   )))
@@ -78,9 +76,7 @@ class _AppVideoPlayerState extends State<AppVideoPlayer> {
       print(e.toString());
     }
 
-
     _controller = ChewieController(
-
         videoPlayerController: ctrl,
         autoPlay: true,
         autoInitialize: true,
@@ -92,7 +88,7 @@ class _AppVideoPlayerState extends State<AppVideoPlayer> {
             Center(child: CircularProgressIndicator()),
           ],
         ),
-       // customControls: const CustomMaterialControls(),
+        // customControls: const CustomMaterialControls(),
         showOptions: false,
         looping: false,
         fullScreenByDefault: false,
@@ -146,8 +142,8 @@ class _AppVideoPlayerState extends State<AppVideoPlayer> {
   @override
   void dispose() {
     _controller?.dispose();
-widget.videoPlayerController!.dispose();
-print("dispose");
+    widget.videoPlayerController!.dispose();
+    print("dispose");
     super.dispose();
   }
 }

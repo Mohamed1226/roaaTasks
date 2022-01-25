@@ -54,10 +54,14 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
+  getUrl(int index){ //TODO: imp
+   return listOfModel[index]["url"] as String;
+  }
+
   buildVideo(index) {
-    initController(listOfModel[index]["url"] as String);
+    initController(getUrl(index));
     return AppVideoPlayer(
-      url: listOfModel[index]["url"] as String,
+      url: getUrl(index),
       videoPlayerController: _ctrl,
     );
   }
